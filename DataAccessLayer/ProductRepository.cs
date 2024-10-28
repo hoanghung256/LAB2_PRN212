@@ -34,6 +34,7 @@ namespace Repository
         public Product GetProductById(int id)
         {
             using var dbContext = new ProductStoreDbContext();
+
             var product = (from p in dbContext.Products
                            join c in dbContext.Categories on p.CategoryID equals c.CategoryID
                            where p.ProductID == id
@@ -41,7 +42,7 @@ namespace Repository
                            {
                                ProductID = p.ProductID,
                                ProductName = p.ProductName,
-                               Category = new Category { CategoryName = c.CategoryName },
+                               Category = new Category(p.CategoryID, c.CategoryName),
                                UnitsInStock = p.UnitsInStock,
                                UnitPrice = p.UnitPrice
                            }).FirstOrDefault();
