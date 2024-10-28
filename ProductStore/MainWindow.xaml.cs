@@ -148,7 +148,6 @@ namespace ProductStore
             txtPrice.Text = product.UnitPrice.ToString();
             txtUnitsInStock.Text = product.UnitsInStock.ToString();
             cboCategory.SelectedValue = product.Category.CategoryID;
-            cboCategory.SelectionChanged = product.Category.CategoryName;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
